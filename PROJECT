@@ -69,4 +69,18 @@ public class Server {
             response.append("<button type='submit'>Scrape</button>");
             response.append("</form>");
 
-           
+
+            // 🔥 IF USER PRESSES BUTTON
+            if (method.equalsIgnoreCase("POST")) {
+
+                InputStream is = exchange.getRequestBody();
+                String body = new String(is.readAllBytes(), StandardCharsets.UTF_8);
+
+                String url = body.split("=")[1];
+                url = URLDecoder.decode(url, "UTF-8");
+
+                response.append("<h3>Results:</h3>");
+                response.append("<table>");
+                response.append("<tr><th>No</th><th>Title</th><th>Price</th></tr>");
+
+                
