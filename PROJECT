@@ -30,4 +30,21 @@ public class Server {
         System.out.println("Server started at http://localhost:7070");
     }
 
-    
+
+    static class MyHandler implements HttpHandler {
+
+        public void handle(HttpExchange exchange) throws IOException {
+
+            String method = exchange.getRequestMethod();
+
+            StringBuilder response = new StringBuilder();
+
+            // 🔥 HTML START
+            response.append("<html><head>");
+
+            // ✅ FIX encoding
+            response.append("<meta charset='UTF-8'>");
+
+            response.append("<title>Web Scraper</title>");
+
+            
