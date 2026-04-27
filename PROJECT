@@ -83,4 +83,29 @@ public class Server {
                 response.append("<table>");
                 response.append("<tr><th>No</th><th>Title</th><th>Price</th></tr>");
 
-                
+
+                try {
+                    Document doc = Jsoup.connect(url).get();
+                    Elements books = doc.select("article.product_pod");
+
+                    int count = 1;
+
+                    for (Element book : books) {
+
+                        String title = book.select("h3 a").attr("title");
+                        String price = book.select("p.price_color").text();
+
+                        response.append("<tr>");
+                        response.append("<td>" + count + "</td>");
+                        response.append("<td>" + title + "</td>");
+                        response.append("<td>" + price + "</td>");
+                        response.append("</tr>");
+
+                        count++;
+                    }
+
+                } catch (Exception e) {
+                    response.append("<p style='color:red;'>Error fetching data</p>");
+                }
+
+               
