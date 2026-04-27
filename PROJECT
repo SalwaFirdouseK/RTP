@@ -59,4 +59,14 @@ public class Server {
 
             response.append("</head><body>");
 
-            
+
+            // 🔥 TITLE
+            response.append("<h2>Web Scraper</h2>");
+
+            // 🔥 INPUT FORM
+            response.append("<form method='POST'>");
+            response.append("<input type='text' name='url' placeholder='Enter URL' required>");
+            response.append("<button type='submit'>Scrape</button>");
+            response.append("</form>");
+
+           
